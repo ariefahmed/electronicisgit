@@ -1,0 +1,17 @@
+{
+	"name": "AzureSqlDatabase3",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "electronicsserver.database.windows.net",
+			"database": "electronicsdb",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "electronicslogin",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDE0QTg3M0RDLUIwN0YtNDI5OS1BNThBLUM1ODk1QTNENTRFQV9hNzc1N2ViNS00YWRhLTRmM2QtOGVmMC02ZDE0MDlkMTlhNGEiDQp9"
+		}
+	}
+}

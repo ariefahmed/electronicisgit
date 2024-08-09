@@ -1,0 +1,17 @@
+{
+	"name": "AzureSqlTable5_uniontable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase3",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "union_desttable"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

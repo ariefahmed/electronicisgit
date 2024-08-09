@@ -1,0 +1,45 @@
+{
+	"name": "foreach_destination",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase3",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "sno",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "productname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "year",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "sales",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "tablename",
+				"type": "nvarchar"
+			},
+			{
+				"name": "dateloaded",
+				"type": "date"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "foreachinput3_destination"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

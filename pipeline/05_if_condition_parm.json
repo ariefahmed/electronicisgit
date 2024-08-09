@@ -1,0 +1,64 @@
+{
+	"name": "05_if_condition_parm",
+	"properties": {
+		"activities": [
+			{
+				"name": "If Condition1",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@bool(startswith(pipeline().parameters.lparfilename,'loaddata'))",
+						"type": "Expression"
+					},
+					"ifFalseActivities": [
+						{
+							"name": "fal cas",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"policy": {
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "03_storageaccount",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						}
+					],
+					"ifTrueActivities": [
+						{
+							"name": "tru cas",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"policy": {
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "01_copy_date",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"lparfilename": {
+				"type": "string",
+				"defaultValue": "loaddata"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2024-06-25T02:44:37Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

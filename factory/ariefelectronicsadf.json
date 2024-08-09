@@ -1,0 +1,9 @@
+{
+	"name": "ariefelectronicsadf",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "026190fb-a2d7-4b6c-b692-cbd8500f40e3",
+		"tenantId": "8eb94cec-94c3-45ca-9b9b-c5fe9ed7da2c"
+	}
+}

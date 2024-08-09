@@ -1,0 +1,31 @@
+{
+	"name": "Lookup_AzureSqlTable4",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase3",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "sno",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "columnlist",
+				"type": "nvarchar"
+			},
+			{
+				"name": "tablenamelist",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "foreachinput_lookup"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

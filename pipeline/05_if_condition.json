@@ -1,0 +1,64 @@
+{
+	"name": "05_if_condition",
+	"properties": {
+		"activities": [
+			{
+				"name": "If Condition1",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@bool(startswith(variables('varfilename') ,'loaddata'))",
+						"type": "Expression"
+					},
+					"ifFalseActivities": [
+						{
+							"name": "fal cas",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"policy": {
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "03_storageaccount",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						}
+					],
+					"ifTrueActivities": [
+						{
+							"name": "tru cas",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"policy": {
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "01_copy_date",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						}
+					]
+				}
+			}
+		],
+		"variables": {
+			"varfilename": {
+				"type": "String",
+				"defaultValue": "loaddata"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2024-06-25T02:44:37Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

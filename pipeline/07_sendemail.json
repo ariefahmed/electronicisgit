@@ -1,0 +1,88 @@
+{
+	"name": "07_sendemail",
+	"properties": {
+		"activities": [
+			{
+				"name": "Web1",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Execute Pipeline1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"url": "https://prod-85.eastus.logic.azure.com:443/workflows/244d4134f651451a9a2edc25b1db0584/triggers/When_a_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=N-3aQ1KOd9v38YnXaqm4HNs-lI6PhDM9_B3bfktYQQQ",
+					"body": {
+						"value": "{\n \"DataFactoryName\" : \"@{pipeline().DataFactory}\",\n  \"PieplineName\"   : \"@{pipeline().Pipeline}\",\n  \"Subject\"        :  \"Pipeline sucess\",\n  \"Message\"        :  \"Current Pipeline sucess\",\n  \"EmailTo\"        :  \"arief.vn951@gmail.com\"\n}\n",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Execute Pipeline1",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "01_copy_date",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Web2",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Execute Pipeline1",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"url": "https://prod-85.eastus.logic.azure.com:443/workflows/244d4134f651451a9a2edc25b1db0584/triggers/When_a_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=N-3aQ1KOd9v38YnXaqm4HNs-lI6PhDM9_B3bfktYQQQ",
+					"body": {
+						"value": "{\n \"DataFactoryName\" : \"@{pipeline().DataFactory}\",\n  \"PieplineName\"   : \"@{pipeline().Pipeline}\",\n  \"Subject\"        :  \"Pipeline failure\n  \"Message\"        :  \"Current Pipeline failed\",\n  \"EmailTo\"        :  \"banu.shaik@gmail.com\"\n}\n",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2024-08-03T18:33:19Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
